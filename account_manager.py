@@ -43,3 +43,7 @@ class Account_manager():
                     self.account_list.append(acc)
         except FileNotFoundError:
             pass
+        except Exception as e:
+            print(f"데이터 파일이 손상되었거나 형식 오류가 발생하여 초기화합니다. (원인: {e})")
+            with open("bank_data.json", "w", encoding="utf-8") as f:
+                f.write("[]")
