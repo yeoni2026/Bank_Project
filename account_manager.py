@@ -1,10 +1,12 @@
 import random
 from account import Account
+import json
 
 class Account_manager():
 
     def __init__(self):
         self.account_list = []
+        self.load_data()
 
     def find_account(self, msg):
         while True:
@@ -26,3 +28,18 @@ class Account_manager():
             acc = Account(account_number, guest)
             self.account_list.append(acc)
             break
+
+    def save_data(self):
+        data = [[acc.number, acc.name, acc.remains] for acc in self.account_list]
+        with open("bank_data.json", "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=4, ensure_ascii=False)
+
+    def load_data(self):
+        try:
+            with open("bank_data.json", "r", encoding="utf-8") as f:
+                data = json.load(f)
+                for item in data:
+                    acc = Account(item[0], item[1], item[2])
+                    self.account_list.append(acc)
+        except FileNotFoundError:
+            pass

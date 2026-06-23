@@ -14,6 +14,7 @@ while True:
         continue
     if menu == 5:
         print("이용해 주셔서 감사합니다.")
+        manager.save_data()
         break
     msg = menu_names.get(menu)
     acc = manager.find_account(msg)
