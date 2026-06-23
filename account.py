@@ -27,4 +27,4 @@ class Account:
             self.remains -= money
             return True            
     def info(self):
-        print(f"계좌번호: {self.number} | 이름: {self.name} | 잔액: {self.remains}")
+        print(f"계좌번호: {self.number} | 이름: {self.name} | 잔액: {self.remains}원")
