@@ -1,8 +1,8 @@
 from utils import get_safe_int
-from account_manager import Account_manager
+from account_manager import AccountManager
 
 menu_names = {1: "개설", 2: "입금", 3: "출금", 4: "확인", 5: "종료"}
-manager = Account_manager()
+manager = AccountManager()
 
 while True:
     menu = get_safe_int("1. 계좌개설 2. 입금 3. 출금 4. 계좌확인 5. 종료 : ")
