@@ -19,5 +19,8 @@
 ## utils.py
 - 코딩에 도움 주는 기능들 (예외처리 등)
 
+## test_account.py
+- account.py 관련 테스트 (pytest)
+
 ## bank_data.json
 - 계좌 데이터 저장
