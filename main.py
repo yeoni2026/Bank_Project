@@ -1,7 +1,9 @@
 from utils import get_safe_int
 from account_manager import AccountManager
+from handler import handle_deposit, handle_withdraw, handle_find_account
 
-menu_names = {1: "개설", 2: "입금", 3: "출금", 4: "확인", 5: "확인", 6: "종료"}
+
+menu_names = {2: "입금", 3: "출금", 4: "확인", 5: "확인"}
 manager = AccountManager()
 
 while True:
@@ -17,12 +19,12 @@ while True:
         manager.save_data()
         break
     msg = menu_names.get(menu)
-    acc = manager.find_account(msg)
+    acc = handle_find_account(manager, msg)
     match menu:
         case 2:
-            acc.deposit()
+            handle_deposit(acc)
         case 3:
-            acc.withdraw()
+            handle_withdraw(acc)
         case 4:
             acc.info()
         case 5:

@@ -3,20 +3,19 @@ from account import Account
 import json
 import sys
 
+
 class AccountManager():
 
     def __init__(self):
         self.account_list = []
         self.load_data()
 
-    def find_account(self, msg):
-        while True:
-            account_number = input(f"{msg}할 계좌의 계좌번호를 입력하세요 : ")
-            for acc in self.account_list:
-                if acc.number == account_number:
-                    return acc
-            else : 
-                print("존재하지 않는 계좌번호입니다.")
+    def find_account(self, account_number):
+        for acc in self.account_list:
+            if acc.number == account_number:
+                return acc
+        else : 
+            return None
 
     def open_account(self): 
         
