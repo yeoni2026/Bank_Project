@@ -1,9 +1,10 @@
+#account.py
 from utils import get_safe_int
 from datetime import datetime
 
 
 class Account:
-    
+
     def __init__(self, number : str, name : str, remains : int = 0, history = None):
         self.number = number
         self.name = name

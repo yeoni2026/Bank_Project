@@ -1,3 +1,4 @@
+#handler.py
 from utils import get_safe_int
 
 def handle_deposit(acc):
@@ -6,8 +7,9 @@ def handle_deposit(acc):
         try:
             acc.deposit(money)  
             print("입금 완료되었습니다!")
-        except ValueError: 
-            continue
+            break
+        except ValueError as e: 
+            print(e)
 
 def handle_withdraw(acc):
     while True:
@@ -15,8 +17,9 @@ def handle_withdraw(acc):
         try:
             acc.withdraw(money)  
             print("출금 완료되었습니다!")
-        except ValueError: 
-            continue
+            break
+        except ValueError as e: 
+            print(e)
 
 def handle_find_account(manager, msg):
     while True:
