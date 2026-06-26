@@ -19,11 +19,13 @@ class AccountManager():
                 print("존재하지 않는 계좌번호입니다.")
 
     def open_account(self): 
+        
+        guest = input("이름을 입력해주세요 : ")
+        if any(guest == acc.name for acc in self.account_list):
+            print(f"{guest}님의 계좌는 이미 존재합니다. 한 사람당 하나의 계좌만 사용가능합니다.")
+            return
+        
         while True:
-            guest = input("이름을 입력해주세요 : ")
-            if any(guest == acc.name for acc in self.account_list):
-                print(f"{guest}님의 계좌는 이미 존재합니다. 한 사람당 하나의 계좌만 사용가능합니다.")
-                break
             random_num = random.randint(0,9999)
             account_number = f"{random_num:04d}"
             if any(acc.number == account_number for acc in self.account_list):
