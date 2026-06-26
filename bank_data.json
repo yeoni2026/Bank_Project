@@ -1,33 +1,44 @@
 [
     {
-        "number": "9622",
+        "number": "5470",
         "name": "김태연",
-        "remains": 24000,
+        "remains": 15000,
         "history": [
             {
-                "date": "2026-06-26 01:17:47",
+                "date": "2026-06-26 12:52:30",
                 "type": "입금",
-                "amount": 4000,
-                "balance_after": 24000
-            }
-        ]
-    },
-    {
-        "number": "6464",
-        "name": "김정영",
-        "remains": 30000,
-        "history": [
-            {
-                "date": "2026-06-26 01:18:05",
-                "type": "출금",
-                "amount": 3000,
+                "amount": 10000,
                 "balance_after": 10000
             },
             {
-                "date": "2026-06-26 01:18:52",
+                "date": "2026-06-26 12:52:39",
                 "type": "입금",
-                "amount": 20000,
-                "balance_after": 30000
+                "amount": 100000,
+                "balance_after": 110000
+            },
+            {
+                "date": "2026-06-26 12:52:52",
+                "type": "입금",
+                "amount": 3000,
+                "balance_after": 113000
+            },
+            {
+                "date": "2026-06-26 13:03:16",
+                "type": "출금",
+                "amount": 40000,
+                "balance_after": 73000
+            },
+            {
+                "date": "2026-06-26 13:04:02",
+                "type": "입금",
+                "amount": 7000,
+                "balance_after": 80000
+            },
+            {
+                "date": "2026-06-26 13:04:10",
+                "type": "출금",
+                "amount": 65000,
+                "balance_after": 15000
             }
         ]
     }

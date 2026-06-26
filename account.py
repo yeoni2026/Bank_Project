@@ -39,5 +39,19 @@ class Account:
         record_dic = {"date" : string_time, "type" : type, "amount" : amount, "balance_after" : self.remains}
         self.history.append(record_dic)
 
+    def show_history(self):
+        recent_history = self.history[-5:]
+            
+        if not recent_history:
+            print("거래 내역이 없습니다.")
+            return
+
+        max_digit_amount = max(len(str(item.get("amount", 0))) for item in recent_history)
+        max_digit_balance = max(len(str(item.get("balance_after", 0))) for item in recent_history)
+
+        for item in recent_history:
+            print(f'{item.get("date")} | {item.get("amount"):{max_digit_amount}d}원 {item.get("type")} | 잔액: {item.get("balance_after"):{max_digit_balance}d}원')
+        print("최근 내역 최대 5개까지 보여줍니다.")
+
     def info(self):
         print(f"계좌번호: {self.number} | 이름: {self.name} | 잔액: {self.remains}원")

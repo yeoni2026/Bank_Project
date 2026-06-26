@@ -1,6 +1,7 @@
 import random
 from account import Account
 import json
+import sys
 
 class AccountManager():
 
@@ -17,9 +18,12 @@ class AccountManager():
             else : 
                 print("존재하지 않는 계좌번호입니다.")
 
-    def open_account(self):
-        guest = input("이름을 입력해주세요 : ")
+    def open_account(self): 
         while True:
+            guest = input("이름을 입력해주세요 : ")
+            if any(guest == acc.name for acc in self.account_list):
+                print(f"{guest}님의 계좌는 이미 존재합니다. 한 사람당 하나의 계좌만 사용가능합니다.")
+                break
             random_num = random.randint(0,9999)
             account_number = f"{random_num:04d}"
             if any(acc.number == account_number for acc in self.account_list):
@@ -44,6 +48,5 @@ class AccountManager():
         except FileNotFoundError:
             pass
         except Exception as e:
-            print(f"데이터 파일이 손상되었거나 형식 오류가 발생하여 초기화합니다. (원인: {e})")
-            with open("bank_data.json", "w", encoding="utf-8") as f:
-                f.write("[]")
+            print(f"데이터 파일이 손상되었거나 형식 오류가 발생하여 종료합니다. (원인: {e})")
+            sys.exit()
