@@ -1,6 +1,7 @@
 bank_data.json
 
 __pycache__/
+.pytest_cache/
 *.pyc
 *.pyo
 *.pyd
