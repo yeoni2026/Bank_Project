@@ -4,11 +4,12 @@ from datetime import datetime
 
 class Account:
 
-    def __init__(self, number : str, name : str, remains : int = 0, history = None):
+    def __init__(self, number : str, pin : str, name : str, remains : int = 0, history = None):
         self.number = number
         self.name = name
         self.remains = remains
         self.history = history if history is not None else []
+        self.pin_hash = self.hash_pin(pin)
 
     def deposit(self, money):
         if money <= 0:
@@ -48,3 +49,9 @@ class Account:
 
     def info(self):
         print(f"계좌번호: {self.number} | 이름: {self.name} | 잔액: {self.remains}원")
+    
+    def hash_pin(self, raw_pin):
+        pass
+
+    def verify_pin(self, raw_pin):
+        return self.pin_hash == self.hash_pin(raw_pin)
