@@ -15,8 +15,7 @@ class AccountManager():
         for acc in self.account_list:
             if acc.number == account_number:
                 return acc
-        else : 
-            return None
+        return None
 
     def open_account(self): 
         
