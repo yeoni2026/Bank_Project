@@ -10,5 +10,5 @@ def test_withdraw():
     try:
         acc.withdraw(-10000)
         assert False
-    except:
+    except ValueError:
         pass

@@ -1,5 +1,4 @@
 #account.py
-from utils import get_safe_int
 from datetime import datetime
 
 
