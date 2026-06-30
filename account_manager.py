@@ -27,15 +27,17 @@ class AccountManager():
         while True:
             random_num = random.randint(0,9999)
             account_number = f"{random_num:04d}"
-            if any(acc.number == account_number for acc in self.account_list):
-                continue
-            print(f"계좌가 개설되었습니다! 계좌번호는 {account_number}입니다.")
-            acc = Account(account_number, guest)
-            self.account_list.append(acc)
-            break
+            if not any(acc.number == account_number for acc in self.account_list):
+                break
+            
+        pin = input("사용할 계좌 비밀번호를 입력해주세요 : ")
+
+        print(f"계좌가 개설되었습니다! 계좌번호는 {account_number}입니다.")
+        acc = Account(account_number, pin, guest)
+        self.account_list.append(acc)
 
     def save_data(self):
-        data = [{"number" : acc.number, "name" : acc.name, "remains" : acc.remains, "history" : acc.history} for acc in self.account_list]
+        data = [{"number" : acc.number, "pin_hash" : acc.pin_hash, "name" : acc.name, "remains" : acc.remains, "history" : acc.history} for acc in self.account_list]
         with open("bank_data.json", "w", encoding="utf-8") as f:
             json.dump(data, f, indent=4, ensure_ascii=False)
 
@@ -44,7 +46,7 @@ class AccountManager():
             with open("bank_data.json", "r", encoding="utf-8") as f:
                 data = json.load(f)
                 for item in data:
-                    acc = Account(item.get("number"), item.get("name"), item.get("remains"), item.get("history"))
+                    acc = Account(item.get("number"), item.get("pin_hash"), item.get("name"), item.get("remains"), item.get("history"))
                     self.account_list.append(acc)
         except FileNotFoundError:
             pass

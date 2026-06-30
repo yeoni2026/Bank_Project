@@ -1,6 +1,6 @@
 #account.py
 from datetime import datetime
-
+import hashlib
 
 class Account:
 
@@ -51,7 +51,9 @@ class Account:
         print(f"계좌번호: {self.number} | 이름: {self.name} | 잔액: {self.remains}원")
     
     def hash_pin(self, raw_pin):
-        pass
+        return hashlib.sha256(raw_pin.encode()).hexdigest()
 
     def verify_pin(self, raw_pin):
+        print(self.hash_pin(raw_pin))
+        print(self.pin_hash)
         return self.pin_hash == self.hash_pin(raw_pin)
