@@ -4,10 +4,7 @@ from account_manager import AccountManager
 from handler import handle_deposit, handle_withdraw, handle_find_account
 
 
-menu_names = {1: "입금", 2: "출금", 3: "확인", 4: "확인"}
 manager = AccountManager()
-
-
 
 while True:
     menu1 = get_safe_int("1. 계좌개설 2. 계좌조회 : ")
@@ -26,7 +23,6 @@ while True:
                 continue 
             if menu2 == 5:
                 break
-            
             match menu2:
                 case 2:
                     handle_deposit(acc)

@@ -33,7 +33,7 @@ class AccountManager():
         pin = input("사용할 계좌 비밀번호를 입력해주세요 : ")
 
         print(f"계좌가 개설되었습니다! 계좌번호는 {account_number}입니다.")
-        acc = Account(account_number, pin, guest)
+        acc = Account.create(account_number, pin, guest)
         self.account_list.append(acc)
 
     def save_data(self):

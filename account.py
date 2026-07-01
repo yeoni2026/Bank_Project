@@ -4,13 +4,17 @@ import hashlib
 
 class Account:
 
-    def __init__(self, number : str, pin : str, name : str, remains : int = 0, history = None):
+    def __init__(self, number : str, pin_hash : str, name : str, remains : int = 0, history = None):
         self.number = number
         self.name = name
         self.remains = remains
         self.history = history if history is not None else []
-        self.pin_hash = self.hash_pin(pin)
-
+        self.pin_hash = pin_hash
+    
+    @classmethod
+    def create(cls, number, raw_pin, name):
+        return cls(number, cls.hash_pin(raw_pin), name)
+    
     def deposit(self, money):
         if money <= 0:
             raise ValueError("0원 이하의 금액은 입금할 수 없습니다.")
@@ -50,10 +54,9 @@ class Account:
     def info(self):
         print(f"계좌번호: {self.number} | 이름: {self.name} | 잔액: {self.remains}원")
     
-    def hash_pin(self, raw_pin):
+    @staticmethod
+    def hash_pin(raw_pin):
         return hashlib.sha256(raw_pin.encode()).hexdigest()
 
     def verify_pin(self, raw_pin):
-        print(self.hash_pin(raw_pin))
-        print(self.pin_hash)
         return self.pin_hash == self.hash_pin(raw_pin)
