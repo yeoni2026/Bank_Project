@@ -8,7 +8,7 @@ manager = AccountManager()
 
 while True:
     menu1 = get_safe_int("1. 계좌개설 2. 계좌조회 : ")
-    
+
     if menu1 == 1:
         manager.open_account()
     elif menu1 == 2:
@@ -24,13 +24,13 @@ while True:
             if menu2 == 5:
                 break
             match menu2:
-                case 2:
+                case 1:
                     handle_deposit(acc)
-                case 3:
+                case 2:
                     handle_withdraw(acc)
-                case 4:
+                case 3:
                     acc.info()
-                case 5:
+                case 4:
                     acc.show_history()
     else : 
         print("1부터 2사이의 숫자만 입력해주세요.")
@@ -39,4 +39,3 @@ while True:
     manager.save_data()
     print("이용해 주셔서 감사합니다.")
     break
-

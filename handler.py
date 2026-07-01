@@ -2,24 +2,20 @@
 from utils import get_safe_int
 
 def handle_deposit(acc):
-    while True:
-        money = get_safe_int("얼마를 입금하실 건가요? : ")
-        try:
-            acc.deposit(money)  
-            print("입금 완료되었습니다!")
-            break
-        except ValueError as e: 
-            print(e)
+    money = get_safe_int("얼마를 입금하실 건가요? : ")
+    try:
+        acc.deposit(money)
+        print("입금 완료되었습니다!")
+    except ValueError as e: 
+        print(e)
 
 def handle_withdraw(acc):
-    while True:
-        money = get_safe_int("얼마를 출금하실 건가요? : ")
-        try:
-            acc.withdraw(money)  
-            print("출금 완료되었습니다!")
-            break
-        except ValueError as e: 
-            print(e)
+    money = get_safe_int("얼마를 출금하실 건가요? : ")
+    try:
+        acc.withdraw(money)  
+        print("출금 완료되었습니다!")
+    except ValueError as e: 
+        print(e)
 
 def handle_find_account(manager):
     while True:
